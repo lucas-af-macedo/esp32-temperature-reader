@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/reset.css" rel="stylesheet" type="text/css">
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div class="header">
+        </div>
+        <div class="body">
+            <div class="box">
+                    <div class="temperature1">
+                        <p class="temperature1Text">0ºC</p>
+                    </div>
+                    <div class="temperature2">
+                        <p class="temperature2Text">0ºC</p>
+                    </div>
+                    <div class="voltage">
+                        <p class="voltageText">0V</p>
+                    </div>
+                    <div class="current">
+                        <p class="currentText">0.00A</p>
+                    </div>
+            </div>
+            <div class="box2">
+                <div class="container">
+                    <div class="temperature1">
+                        <p class="temperature1Text">0ºC</p>
+                    </div>
+                    <div class="temperature2">
+                        <p class="temperature2Text">0ºC</p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="voltage">
+                        <p class="voltageText">0V</p>
+                    </div>
+                    <div class="current">
+                        <p class="currentText">0.00A</p>
+                    </div>
+                </div>
+            </div>
+            <div class="boxCanvas">
+                <div class="canvas">
+                    <canvas id="my-canvas" width="300" height="250"></canvas>
+                </div>
+            </div>
+            <div id="carregando" class="carregando"><p>Carregando...</p></div>
+            <div id="buttons" class="buttons hidden"></div>
+            <button id="downloadBtn" onclick="getCsv()">Baixar CSV</button>
+            <pre id="csvContent"></pre>
+            <script type="module" src="script/socket.js"></script>
+        </div>
+    </body>
+</html>

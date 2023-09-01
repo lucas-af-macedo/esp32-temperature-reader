@@ -1,0 +1,164 @@
+body{
+    width: 100vw;
+    font-family: Helvetica; 
+    margin: 0px auto; 
+    text-align: center; 
+    background-color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.header{
+    background-color: blue;
+    height: 80px;
+    width: 100vw;
+    position: fixed;
+}
+
+.box2{
+    display: none;
+}
+
+.box{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: blueviolet;
+}
+@media (max-width: 650px) {
+    .box{
+        display: none;
+    }
+    .box2{
+        display: flex;
+        flex-direction: column;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-bottom: 10px;
+        flex-wrap: wrap;
+        font-size: 20px;
+        color: blueviolet;
+    }
+    .container div{
+        background-color: white;
+        min-width: 140px;
+        width: 80%;
+        max-width: 200px;
+        height: 90px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+        box-shadow: 1px 1px 2px black;
+        border-bottom: 5px solid green;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .container{
+        display: flex;
+        justify-content: space-around;
+    }
+}
+
+.box div{
+    background-color: white;
+    width: 100%;
+    max-width: 200px;
+    min-width: 140px;
+    height: 90px;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-shadow: 1px 1px 2px black;
+    border-bottom: 5px solid green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.body{
+    margin-top: 80px;
+    padding-top: 10px;
+    max-width: 900px;
+    width: 100vw;
+    background-color: gray;
+}
+
+.boxCanvas{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+}
+
+.canvas{
+    width: fit-content;
+    padding: 10px;
+    height: fit-content;
+    border-radius: 5px;
+    margin-top: 15px;
+    background-color: white;
+}
+
+h1 { 
+    color: black;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+}
+.buttons div{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.buttons p{
+    font-size: 12px;
+}
+
+.button { 
+    border: none; 
+    color: white; 
+    width: 120px; 
+    height: 60px; 
+    border-radius: 5px;
+    text-decoration: none; 
+    font-size: 30px; 
+    margin: 2px; 
+    cursor: pointer;
+    background-color: #555555;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.ONred {
+    background-color: red;
+}
+.ONblue {
+    background-color: blue;
+}
+.ONgreen {
+    background-color: green;
+}
+
+.carregando {
+    width: 100vw;
+    max-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carregando p {
+    font-size: 30px; 
+    color: white;
+}
+
+.hidden{
+    display: none;
+}
