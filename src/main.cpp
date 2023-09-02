@@ -12,16 +12,12 @@
 #include "listData/listData.h"
 #include <stdlib.h>
 
+unsigned long previousMillis = 0;
+const long interval = 10; 
+
 AsyncWebServer server(777);
 AsyncWebSocket ws("/ws");
 
-int pos = 0;
-long stringToLong(String s)
-{
-    char arr[12];
-    s.toCharArray(arr, sizeof(arr));
-    return atol(arr);
-}
 
 int analog(int pin){
   float x= analogRead(pin);
@@ -32,7 +28,6 @@ int analog(int pin){
             -0.00030247*x*x
             +0.37845*x
             +47.75;
-  
   return x+y;
 }
 void recvMsg(uint8_t *data, size_t len){
@@ -59,11 +54,10 @@ void recvMsg(uint8_t *data, size_t len){
 void setup() {
   Serial.begin(115200);
   memoryUsage();
-  // Initialize the output variables as outputs
   pinMode(output["green"], OUTPUT);
   pinMode(output["red"], OUTPUT);
   pinMode(output["blue"], OUTPUT);
-  // Set outputs to LOW
+  
   digitalWrite(output["green"], LOW);
   digitalWrite(output["red"], LOW);
   digitalWrite(output["blue"], LOW);
@@ -85,20 +79,23 @@ void setup() {
 int last = 100;
 float oi = 0;
 void loop(){
+  unsigned long currentMillis = millis();
   float valores[20][2];
-  int touch = touchRead(32);
-  int ruido = analogRead(35);
-  listPush(&lista,oi,touch,ruido,2.0);
-  delay(10);
-  oi++;
-  if(touch<30 && last>=30){
+  if (currentMillis - previousMillis >= interval){
+    int touch = touchRead(32);
+    int ruido = analog(35);
+    listPush(&lista,oi,touch,ruido,2.0);
+    previousMillis = currentMillis;
+    oi++;
+  }
+  /*if(touch<30 && last>=30){
     if(digitalRead(output["blue"])==HIGH){
       digitalWrite(output["blue"], LOW);
     }else{
       digitalWrite(output["blue"], HIGH);
     }
   }
-  last = touch;
+  last = touch;*/
   /*for(int i=0;i<20;i++){
     float valor = analogRead(34);
     float temp = 43-((valor/110)*4);

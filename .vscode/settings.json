@@ -51,5 +51,6 @@
         "cinttypes": "cpp",
         "typeinfo": "cpp",
         "*.cdd": "cpp"
-    }
+    },
+    "liveServer.settings.port": 5501
 }

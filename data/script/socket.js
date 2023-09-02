@@ -6,6 +6,7 @@ let buttons = document.getElementById("buttons")
 let loading = document.getElementById("carregando")
 
 window.addEventListener('load', onLoad);
+document.getElementById("downloadBtn").onclick = getCsv;
 
 fetchData()
 canvas()
@@ -89,14 +90,20 @@ function buttonToggle(test){
 
 function getCsv(){
   fetch('/test.csv')
-    .then(response => response.text())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Erro na solicitação: ' + response.statusText);
+      }
+      return response.text()
+    })
     .then(csvContent => {
-        document.getElementById("csvContent").textContent = csvContent;
         const blob = new Blob([csvContent], { type: 'text/csv' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
         a.download = 'data.csv';
         a.click();
+    }).catch(error => {
+      console.log(error);
     });
 }

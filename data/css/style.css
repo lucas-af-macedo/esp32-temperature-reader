@@ -82,8 +82,8 @@ body{
 }
 
 .body{
-    margin-top: 80px;
-    padding-top: 10px;
+    padding-top: 90px;
+    min-height: calc(100vh - 90px);
     max-width: 900px;
     width: 100vw;
     background-color: gray;

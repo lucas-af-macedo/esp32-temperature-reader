@@ -18,25 +18,30 @@ void sendCsv(AsyncWebServerRequest *request){
   AsyncResponseStream *response = request->beginResponseStream("text/csv");
   response->addHeader("Content-Disposition", "attachment; filename=data.csv");
 
-  struct data *current = lista.firstData; // Preencha com sua lista de dados
+  struct data *current = lista.firstData;
+  char csvLine[50]; 
+  try{
     while (current != NULL) {
-        char csvLine[100];  // Ajuste o tamanho conforme necessário
         snprintf(csvLine, sizeof(csvLine), "%.2f,%.2f,%.2f,%.2f\n",
-                 current->temperature1, current->temperature2,
-                 current->voltage, current->current);
+                  current->temperature1, current->temperature2,
+                  current->voltage, current->current);
+                  
         response->print(csvLine);
         current = current->next;
     }
-
     request->send(response);
+  }catch (const std::exception& e){
+      Serial.println("Exceção capturada: " + String(e.what()));
+      delete response;
+      request->send(500, "text/plain", "Erro interno do servidor");
+  }
 }
 
 void sendCali(AsyncWebServerRequest *request){
   AsyncResponseStream *response = request->beginResponseStream("text/csv");
   response->addHeader("Content-Disposition", "attachment; filename=data.csv");
- // Preencha com sua lista de dados
     for (int i = 0; i<100; i++) {
-        char csvLine[100];  // Ajuste o tamanho conforme necessário
+        char csvLine[100];
         snprintf(csvLine, sizeof(csvLine), "%.2f,%.2f\n",
                  array[i][0], array[i][1]);
         response->print(csvLine);

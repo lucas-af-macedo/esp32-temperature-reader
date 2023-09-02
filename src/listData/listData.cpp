@@ -6,7 +6,7 @@ void listPush(struct listData *list, float temperature1, float temperature2, flo
     struct data *aux = list->firstData;
     struct data *newData = (struct data *)malloc(sizeof(struct data));
     int len = list->len;
-    if(list->len==1200){
+    if(list->len==900){
         struct data *aux2 = list->firstData;
         list->firstData = list->firstData->next;
         free(aux2);

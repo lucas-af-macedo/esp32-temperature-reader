@@ -2,17 +2,13 @@
 
 void runOta() {
   ArduinoOTA.setHostname("espota");
-  // No authentication by default
-  // ArduinoOTA.setPassword("admin");
 
   ArduinoOTA.onStart([]() {
     String type;
     if (ArduinoOTA.getCommand() == U_FLASH)
       type = "sketch";
-    else // U_SPIFFS
       type = "filesystem";
 
-    // NOTE: if updating SPIFFS this would be the place to unmount SPIFFS using SPIFFS.end()
     Serial.println("Start updating " + type);
   });
   ArduinoOTA.onEnd([]() {
