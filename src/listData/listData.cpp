@@ -2,7 +2,7 @@
 #include "listData.h"
 
 
-void listPush(struct listData *list, float temperature1, float temperature2, float current, float voltage){
+void listPush(struct listData *list, int time, float temperature1, float temperature2, float current, float voltage){
     struct data *aux = list->firstData;
     struct data *newData = (struct data *)malloc(sizeof(struct data));
     int len = list->len;
@@ -16,16 +16,20 @@ void listPush(struct listData *list, float temperature1, float temperature2, flo
     for(int i=0;i<len-1;i++){
         aux=aux->next;
     }
+    newData->time = time;
     newData->temperature1 = temperature1;
     newData->temperature2 = temperature2;
     newData->current = current;
     newData->voltage = voltage;
     newData->next = NULL;
     if(len==0){
+        newData->previous = NULL;
         list->firstData = newData;
     } else{
+        newData->previous = list->lastData;
         aux->next = newData;
     }
+    list->lastData = newData;
 }
 
 void printList(struct listData *list) {

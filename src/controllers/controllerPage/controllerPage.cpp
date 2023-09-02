@@ -22,8 +22,8 @@ void sendCsv(AsyncWebServerRequest *request){
   char csvLine[50]; 
   try{
     while (current != NULL) {
-        snprintf(csvLine, sizeof(csvLine), "%.2f,%.2f,%.2f,%.2f\n",
-                  current->temperature1, current->temperature2,
+        snprintf(csvLine, sizeof(csvLine), "%d, %.2f,%.2f,%.2f,%.2f\n",
+                  current->time, current->temperature1, current->temperature2,
                   current->voltage, current->current);
                   
         response->print(csvLine);

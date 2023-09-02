@@ -84,7 +84,7 @@ void loop(){
   if (currentMillis - previousMillis >= interval){
     int touch = touchRead(32);
     int ruido = analog(35);
-    listPush(&lista,oi,touch,ruido,2.0);
+    listPush(&lista,oi, oi, touch, ruido, 2.0);
     previousMillis = currentMillis;
     oi++;
   }
